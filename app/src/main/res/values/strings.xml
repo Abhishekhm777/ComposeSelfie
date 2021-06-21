@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SelfieCompose</string>
+    <string name="add_photo">ADD PHOTO</string>
+    <string name="retake_photo">RETAKE PHOTO</string>
+</resources>
