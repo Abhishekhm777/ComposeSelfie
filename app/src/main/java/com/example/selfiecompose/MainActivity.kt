@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SelfieComposeTheme {
+                //observes changes and updates the ui
                 viewModel.uiState.observeAsState().value.let {
                         SelfieScreen(it?.uri) {  onClick() }
                 }

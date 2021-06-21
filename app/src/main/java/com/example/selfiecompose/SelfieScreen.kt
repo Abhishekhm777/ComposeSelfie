@@ -39,6 +39,7 @@ fun SelfieScreen( uri: Uri?, onClickCard: () -> Unit) {
 
             ) {
             Column {
+                //if  photo has not saved uri will be null and we have to display the thumbnail
                 if(uri != null) {
                     Image(
                         painter = rememberCoilPainter(uri, fadeIn = true),

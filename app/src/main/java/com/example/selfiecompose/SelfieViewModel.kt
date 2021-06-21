@@ -7,12 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 class SelfieViewModel(
-    private val  photoUriManager : PhotoUriManager
+    private val photoUriManager: PhotoUriManager
 ) : ViewModel() {
 
-     var uri: Uri? = null
-    var isPhotoSaved = MutableLiveData<Boolean>()
-
+    var uri: Uri? = null
     private val _uiState = MutableLiveData<PhotoDataClass>()
     val uiState: LiveData<PhotoDataClass> = _uiState
 
@@ -22,19 +20,20 @@ class SelfieViewModel(
         return uri
     }
 
-    fun onImageSaved(){
+    fun onImageSaved() {
         _uiState.value = PhotoDataClass(uri)
     }
 
 }
 
+//TODO: Can be replaced by using DI
 class SurveyViewModelFactory(
     private val photoUriManager: PhotoUriManager
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SelfieViewModel::class.java)) {
-            return SelfieViewModel( photoUriManager) as T
+            return SelfieViewModel(photoUriManager) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
